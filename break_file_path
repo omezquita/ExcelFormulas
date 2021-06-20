@@ -1,0 +1,8 @@
+'Purpose: Given a file path in cell B9, get the folder without the filename
+'This requires an excel version with the LET function
+
+=LET(
+          txt, B9,
+          whack_count, LEN(txt) - LEN(SUBSTITUTE(txt, "\", "")),
+          mod_txt, SUBSTITUTE(txt, "\", "|", whack_count),
+          LEFT(mod_txt, FIND("|", mod_txt)-1)) & "\"
